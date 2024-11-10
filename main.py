@@ -3,17 +3,11 @@ import numpy as np
 import keyboard
 import customtkinter
 import threading
-#import win32gui, win32con
-
-#hide = win32gui.GetForegroundWindow()
-#win32gui.ShowWindow(hide, win32con.SW_HIDE)
 
 customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 running = False  # Set to False initially
-
-
 
 app = customtkinter.CTk()
 app.geometry("400x400")
@@ -24,7 +18,7 @@ app.iconbitmap("icon.ico")
 var = customtkinter.IntVar()
 
 mic_thingy = 10
-                                                                                                                                                                                                  
+
 def start_callback():
     global running
     print("start click")
@@ -34,20 +28,23 @@ def start_callback():
     thread.start()
 
 def monitor_microphone():
-    global running
+    global running              
     while running:
-        #print("OK!")
         with sd.InputStream(callback=print_volume):
             sd.sleep(500)  # Keeps the stream alive and updates the volume every 0.5 second
 
 def stop_callback():
     global running
-    #print("stop click")
     running = False
 
 def slider_callback(value):
     global mic_thingy
     mic_thingy = value
+
+def on_closing():
+    global running
+    running = False
+    app.destroy()
 
 frame_1 = customtkinter.CTkFrame(master=app)
 frame_1.pack(pady=20, padx=60, fill="both", expand=True)
@@ -71,13 +68,15 @@ button_2 = customtkinter.CTkButton(master=frame_1, command=stop_callback, text="
 button_2.pack(pady=10, padx=10, side="left")
 
 def print_volume(indata, frames, time, status):
+    global volume_norm
     volume_norm = np.linalg.norm(indata) * 10
     print(f'Microphone Volume: {volume_norm:.2f}')
     if volume_norm > mic_thingy:
         keyboard.press('space')
     else:
         keyboard.release('space')
-                                                                                                                                                                                                                 
 
-#print("aaaa")
+# Bind the custom close function to the window close event
+app.protocol("WM_DELETE_WINDOW", on_closing)
+
 app.mainloop()
