@@ -2,6 +2,8 @@ import sounddevice as sd
 import numpy as np
 import keyboard
 
+
+
 def print_volume(indata, frames, time, status):
     volume_norm = np.linalg.norm(indata) * 10
     print(f'Microphone Volume: {volume_norm:.2f}')
@@ -13,7 +15,7 @@ def print_volume(indata, frames, time, status):
 
 with sd.InputStream(callback=print_volume):
     while True:
-        sd.sleep(1000)  # Keeps the stream alive and updates the volume every second
+        sd.sleep(1000)  # Keeps the stream alive and updates the volume every second                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
                                                                                                                                   
 
