@@ -19,7 +19,7 @@ app = customtkinter.CTk()
 app.geometry("400x400")
 app.title("Voice Controlled Click")
 app.resizable(False, False)
-app.iconbitmap()
+app.iconbitmap("icon.ico")
 
 var = customtkinter.IntVar()
 
