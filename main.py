@@ -11,7 +11,7 @@ running = False  # Set to False initially
 
 app = customtkinter.CTk()
 app.geometry("400x400")
-app.title("Voice Controlled Click")
+app.title("Voice Controlled Click by @ThomazBrasil on GitHub")
 app.resizable(False, False)
 app.iconbitmap("icon.ico")
 
@@ -70,7 +70,7 @@ button_2.pack(pady=10, padx=10, side="left")
 def print_volume(indata, frames, time, status):
     global volume_norm
     volume_norm = np.linalg.norm(indata) * 10
-    print(f'Microphone Volume: {volume_norm:.2f}')
+    #print(f'Microphone Volume: {volume_norm:.2f}')
     if volume_norm > mic_thingy:
         keyboard.press('space')
     else:
