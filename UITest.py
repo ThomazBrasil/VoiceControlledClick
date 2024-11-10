@@ -27,12 +27,16 @@ frame_1.pack(pady=20, padx=60, fill="both", expand=True)
 label = customtkinter.CTkLabel(master=frame_1, text="Test")
 label.pack(pady=10, padx=10)
 
-button_1 = customtkinter.CTkButton(master=frame_1, command=button_callback)
-button_1.pack(pady=10, padx=10, side="left")
-
 slider_1 = customtkinter.CTkSlider(master=frame_1, command=slider_callback, from_=0, to=1)
 slider_1.pack(pady=10, padx=10)
 slider_1.set(0.5)
+
+button_1 = customtkinter.CTkButton(master=frame_1, command=button_callback)
+button_1.pack(pady=10, padx=10, side="left")
+button_2 = customtkinter.CTkButton(master=frame_1, command=button_callback)
+button_2.pack(pady=10, padx=10, side="left")
+
+
 
 
 text_1 = customtkinter.CTkTextbox(master=frame_1, width=200, height=70)
