@@ -22,6 +22,7 @@ def slider_callback(value):
     
     print(value)
 
+var = customtkinter.IntVar()
 
 frame_1 = customtkinter.CTkFrame(master=app)
 frame_1.pack(pady=20, padx=60, fill="both", expand=True)
@@ -29,12 +30,15 @@ frame_1.pack(pady=20, padx=60, fill="both", expand=True)
 label = customtkinter.CTkLabel(master=frame_1, text="Mic Volume for Trigger")
 label.pack(pady=10, padx=10)
 
-slider_1 = customtkinter.CTkSlider(master=frame_1, command=slider_callback, from_=0, to=30)
-slider_1.pack(pady=10, padx=10)
+slider_1 = customtkinter.CTkSlider(master=frame_1, command=slider_callback,variable=var, from_=0, to=30)
+slider_1.pack(pady=10, padx=10, side="top")
 slider_1.set(10)
 
-label_2 = customtkinter.CTkLabel(master=frame_1, text="Microphone Volume: 0")
-label.pack(pady=10, padx=10)
+label2 = customtkinter.CTkLabel(master=frame_1, textvariable=var)
+label2.pack(pady=10, padx=10)
+
+label2 = customtkinter.CTkLabel(master=frame_1, text="Microphone Volume: 0")
+label2.pack(pady=10, padx=10)
 
 button_1 = customtkinter.CTkButton(master=frame_1, command=start_callback, text="Start")
 button_1.pack(pady=10, padx=10, side="left")
