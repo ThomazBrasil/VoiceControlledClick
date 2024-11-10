@@ -12,9 +12,11 @@ app.title("From the screen to the ring to the pen to the king")
 app.resizable(False, False)
 
 
-def button_callback():
-    print("Button click")
+def start_callback():
+    print("start click")
 
+def stop_callback():
+    print("stop click")
 
 def slider_callback(value):
     
@@ -24,16 +26,19 @@ def slider_callback(value):
 frame_1 = customtkinter.CTkFrame(master=app)
 frame_1.pack(pady=20, padx=60, fill="both", expand=True)
 
-label = customtkinter.CTkLabel(master=frame_1, text="Test")
+label = customtkinter.CTkLabel(master=frame_1, text="Mic Volume for Trigger")
 label.pack(pady=10, padx=10)
 
-slider_1 = customtkinter.CTkSlider(master=frame_1, command=slider_callback, from_=0, to=1)
+slider_1 = customtkinter.CTkSlider(master=frame_1, command=slider_callback, from_=0, to=30)
 slider_1.pack(pady=10, padx=10)
-slider_1.set(0.5)
+slider_1.set(10)
 
-button_1 = customtkinter.CTkButton(master=frame_1, command=button_callback, text="Start")
+label_2 = customtkinter.CTkLabel(master=frame_1, text="Microphone Volume: 0")
+label.pack(pady=10, padx=10)
+
+button_1 = customtkinter.CTkButton(master=frame_1, command=start_callback, text="Start")
 button_1.pack(pady=10, padx=10, side="left")
-button_2 = customtkinter.CTkButton(master=frame_1, command=button_callback, text="Stop")
+button_2 = customtkinter.CTkButton(master=frame_1, command=stop_callback, text="Stop")
 button_2.pack(pady=10, padx=10, side="left")
 
 
