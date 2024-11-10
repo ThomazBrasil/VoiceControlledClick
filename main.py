@@ -15,8 +15,4 @@ def print_volume(indata, frames, time, status):
 
 with sd.InputStream(callback=print_volume):
     while True:
-        sd.sleep(1000)  # Keeps the stream alive and updates the volume every second                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-
-                                                                                                                                  
-
-                                                                                                                                                                                                                                                                     
+        sd.sleep(1000)  # Keeps the stream alive and updates the volume every second
